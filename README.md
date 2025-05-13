@@ -24,36 +24,29 @@ Tento projekt slúži ako inštalátor webového servera na Raspberry Pi (Raspbi
 
 Na Raspberry Pi otvor terminál a zadaj:
 
-```bash
-git clone https://github.com/<tvoje-username>/<nazov-repozitara>.git
-cd <nazov-repozitara>
 ```
-
-> 💡 Nahraď `<tvoje-username>` a `<nazov-repozitara>` podľa tvojej adresy na GitHube.
-
----
+git clone https://github.com/AlexStefanak/RaspbianOSUdos.git
+cd RaspbianOSUdos
+```
 
 ### 2. 🛠️ Nastavenie práv pre skripty
 
-```bash
+```
 chmod +x install_full_stack.sh setup_users.sh deploy_webapp.sh
 ```
 
----
-
 ### 3. 🚀 Spustenie inštalácie softvéru
 
-```bash
+```
 ./install_full_stack.sh
 ```
-
 Nainštaluje Apache2, PHP, MariaDB a nastaví root heslo databázy (`rootpassword`).
 
 ---
 
 ### 4. 👤 Vytvorenie používateľov
 
-```bash
+```
 ./setup_users.sh
 ```
 
@@ -65,7 +58,7 @@ Vytvoria sa používatelia:
 
 ### 5. 🌐 Nasadenie webovej aplikácie
 
-```bash
+```
 ./deploy_webapp.sh
 ```
 
@@ -79,7 +72,7 @@ Webová aplikácia bude nasadená do:
 ## 🌍 Ako otvoriť webserver
 
 Zisti IP adresu Raspberry Pi:
-```bash
+```
 hostname -I
 ```
 
@@ -99,13 +92,3 @@ http://<IP_adresa_tvojho_Pi>
 
 ---
 
-## 🛡️ Bezpečnostné poznámky
-
-- V produkcii **zmeň heslá** za silnejšie!
-- Tento setup je určený len na školské účely a testovanie.
-
----
-
-## 📄 Licencia
-
-MIT © Tvoje Meno

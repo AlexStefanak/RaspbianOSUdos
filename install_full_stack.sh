@@ -1,18 +1,33 @@
 #!/bin/bash
 
-echo "=== Aktualizujem balíčky ==="
+echo "🔄 Aktualizujem systém..."
 sudo apt update && sudo apt upgrade -y
 
-echo "=== Inštalujem Apache2, PHP, MariaDB a ďalšie nástroje ==="
-sudo apt install apache2 php libapache2-mod-php mariadb-server php-mysql git curl -y
+echo "📦 Inštalujem Apache2, PHP, MariaDB, iptables, netfilter-persistent a Node.js..."
 
-echo "=== Spúšťam a povoľujem Apache a MariaDB ==="
-sudo systemctl enable apache2
-sudo systemctl start apache2
-sudo systemctl enable mariadb
-sudo systemctl start mariadb
+# Web server a PHP
+sudo apt install -y apache2 php libapache2-mod-php php-mysql
 
-echo "=== Nastavujem MariaDB root heslo ==="
+# Databázový server
+sudo apt install -y mariadb-server
+
+# Firewall nástroje
+sudo apt install -y iptables netfilter-persistent
+
+# Node.js (pre JavaScript mimo prehliadača)
+sudo apt install -y nodejs npm
+
+# git a curl (užitočné vývojové nástroje)
+sudo apt install -y git curl
+
+echo "✅ Inštalácia dokončená."
+
+# Zabezpečenie MariaDB (neinteraktívne)
 sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'rootpassword'; FLUSH PRIVILEGES;"
 
-echo "=== Inštalácia hotová ==="
+echo "🔐 Nastavené heslo pre MariaDB root používateľa na: rootpassword"
+
+# Reštart Apache pre istotu
+sudo systemctl restart apache2
+
+echo "🚀 Webový server pripravený na http://<tvoja-IP-adresa>"

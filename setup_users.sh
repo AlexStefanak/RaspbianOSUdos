@@ -16,11 +16,11 @@ echo "✅ Vytvorený používateľ webadmin (bez sudo)"
 echo "🛠️ Vytváram databázového používateľa 'webuser' a databázu 'webapp'..."
 
 # SQL príkazy na vytvorenie databázy a používateľa s heslom
-sudo mysql -u root <<EOF
+sudo mysql -u root -p'rootpassword' -e "
 CREATE DATABASE IF NOT EXISTS webapp;
-CREATE USER IF NOT EXISTS 'webuser'@'localhost' IDENTIFIED WITH mysql_native_password BY 'webpass';
+CREATE USER IF NOT EXISTS 'webuser'@'localhost' IDENTIFIED BY 'webpass';
 GRANT ALL PRIVILEGES ON webapp.* TO 'webuser'@'localhost';
 FLUSH PRIVILEGES;
-EOF
+"
 
 echo "✅ Databáza 'webapp' a používateľ 'webuser' boli úspešne vytvorení a nakonfigurovaní."

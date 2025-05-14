@@ -37,7 +37,7 @@ FLUSH PRIVILEGES;
 
 # Vytvorenie používateľa v tabulke 'users' s heslom pre PHP login (hashovanie hesla)
 INSERT INTO webapp.users (username, password) 
-VALUES ('webadmin', PASSWORD('web123'));
+VALUES ('webadmin', 'web123');
 "
 
 echo " Databáza 'webapp' a používateľ 'webuser' boli úspešne vytvorení a nakonfigurovaní."

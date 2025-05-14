@@ -6,14 +6,14 @@ echo "👤 Vytváram systémové používateľské účty..."
 sudo useradd -m adminserver -s /bin/bash
 echo "adminserver:admin123" | sudo chpasswd
 sudo usermod -aG sudo adminserver
-echo "✅ Vytvorený používateľ adminserver (sudopráva)"
+echo " Vytvorený používateľ adminserver (sudopráva)"
 
 # Web správca
 sudo useradd -m webadmin -s /bin/bash
 echo "webadmin:web123" | sudo chpasswd
-echo "✅ Vytvorený používateľ webadmin (bez sudo)"
+echo " Vytvorený používateľ webadmin (bez sudo)"
 
-echo "🛠️ Vytváram databázového používateľa 'webuser' a databázu 'webapp'..."
+echo " Vytváram databázového používateľa 'webuser' a databázu 'webapp'..."
 
 # SQL príkazy na vytvorenie databázy a používateľa s heslom
 sudo mysql -u root -p'rootpassword' -e "
@@ -40,4 +40,4 @@ INSERT INTO webapp.users (username, password)
 VALUES ('webadmin', PASSWORD('web123'));
 "
 
-echo "✅ Databáza 'webapp' a používateľ 'webuser' boli úspešne vytvorení a nakonfigurovaní."
+echo " Databáza 'webapp' a používateľ 'webuser' boli úspešne vytvorení a nakonfigurovaní."

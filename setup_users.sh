@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "👤 Vytváram systémové používateľské účty..."
+echo " Vytváram systémové používateľské účty..."
 
 # Admin účet
 sudo useradd -m adminserver -s /bin/bash

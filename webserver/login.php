@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute([$_POST["username"]]);
     $user = $stmt->fetch();
 
-    if ($user && password_verify($_POST["password"], $user["password"])) {
+    if ($user && $_POST["password"] == $user["password"]) {
         $_SESSION["user"] = $user["username"];
         header("Location: success.php");
     } else {

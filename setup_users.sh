@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "👤 Vytváram používateľské účty..."
+echo "👤 Vytváram systémové používateľské účty..."
 
 # Admin účet
 sudo useradd -m adminserver -s /bin/bash
@@ -13,17 +13,14 @@ sudo useradd -m webadmin -s /bin/bash
 echo "webadmin:web123" | sudo chpasswd
 echo "✅ Vytvorený používateľ webadmin (bez sudo)"
 
-echo "🛠️ Nastavujem databázového používateľa webuser v MariaDB..."
+echo "🛠️ Vytváram databázového používateľa 'webuser' a databázu 'webapp'..."
 
-# SQL ako samostatný príkazový reťazec
-SQL_QUERY=\"\"\"
+# SQL príkazy na vytvorenie databázy a používateľa s heslom
+sudo mysql -u root <<EOF
 CREATE DATABASE IF NOT EXISTS webapp;
 CREATE USER IF NOT EXISTS 'webuser'@'localhost' IDENTIFIED WITH mysql_native_password BY 'webpass';
 GRANT ALL PRIVILEGES ON webapp.* TO 'webuser'@'localhost';
 FLUSH PRIVILEGES;
-\"\"\"
+EOF
 
-# Spustenie SQL
-mysql -u root -p'rootpassword' -e "$SQL_QUERY"
-
-echo "✅ Databáza 'webapp' a používateľ 'webuser' boli nastavení správne."
+echo "✅ Databáza 'webapp' a používateľ 'webuser' boli úspešne vytvorení a nakonfigurovaní."

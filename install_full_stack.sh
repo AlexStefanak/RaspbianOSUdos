@@ -29,5 +29,3 @@ echo " Nastavené heslo pre MariaDB root používateľa na: rootpassword"
 
 # Reštart Apache pre istotu
 sudo systemctl restart apache2
-
-echo " Webový server pripravený na http://<tvoja-IP-adresa>"

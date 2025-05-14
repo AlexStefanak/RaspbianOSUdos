@@ -1,29 +1,29 @@
 #!/bin/bash
 
 echo "🔄 Aktualizujem systém..."
-sudo apt update && sudo apt upgrade -y
+sudo apt-get update && sudo apt-get upgrade -y
 
 echo "📦 Inštalujem Apache2, PHP, MariaDB, iptables, netfilter-persistent a Node.js..."
 
 # Web server a PHP
-sudo apt install -y apache2 php libapache2-mod-php php-mysql
+sudo apt-get install -y apache2 php libapache2-mod-php php-mysql
 
 # Databázový server
-sudo apt install -y mariadb-server
+sudo apt-get install -y mariadb-server
 
 # Firewall nástroje
-sudo apt install -y iptables netfilter-persistent
+sudo apt-get install -y iptables netfilter-persistent
 
 # Node.js (pre JavaScript mimo prehliadača)
-sudo apt install -y nodejs npm
+sudo apt-get install -y nodejs npm
 
 # git a curl (užitočné vývojové nástroje)
-sudo apt install -y git curl
+sudo apt-get install -y git curl
 
 echo "✅ Inštalácia dokončená."
 
 # Zabezpečenie MariaDB (neinteraktívne)
-sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'rootpassword'; FLUSH PRIVILEGES;"
+sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'root'; FLUSH PRIVILEGES;"
 
 echo "🔐 Nastavené heslo pre MariaDB root používateľa na: rootpassword"
 

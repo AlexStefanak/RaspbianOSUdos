@@ -15,12 +15,10 @@ echo "✅ Vytvorený používateľ webadmin (bez sudo)"
 
 echo "🛠️ Nastavujem databázového používateľa webuser v MariaDB..."
 
-# Vytvorenie webuser s mysql_native_password (PHP kompatibilita)
-sudo mysql -e "
-CREATE DATABASE IF NOT EXISTS webapp;
-CREATE USER IF NOT EXISTS 'webuser'@'localhost' IDENTIFIED WITH mysql_native_password BY 'webpass';
-GRANT ALL PRIVILEGES ON webapp.* TO 'webuser'@'localhost';
-FLUSH PRIVILEGES;
-"
+# SQL príkazy s prihlásením ako root (s heslom)
+mysql -u root -p'rootpassword' -e "CREATE DATABASE IF NOT EXISTS webapp; \
+CREATE USER IF NOT EXISTS 'webuser'@'localhost' IDENTIFIED WITH mysql_native_password BY 'webpass'; \
+GRANT ALL PRIVILEGES ON webapp.* TO 'webuser'@'localhost'; \
+FLUSH PRIVILEGES;"
 
 echo "✅ Databáza 'webapp' a používateľ 'webuser' boli nastavení správne."
